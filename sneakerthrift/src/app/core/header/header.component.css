@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+}
+
+.logo {
+    font-size: 15px;
+    align-self: center;
+    justify-content: center;
+    padding: 0 4rem;
+}
+
+.logo>h1>span {
+    color: var(--lightBlue);
+}
+
+.header-menu {
+    display: flex;
+    height: 100px;
+    gap: 2rem;
+    padding: 0 3rem;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.header-menu>a {
+    text-decoration: none;
+    color: black;
+    align-self: center;
+    font-style: bold;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.header-menu>a:hover {
+    color: var(--lightBlue);
+}

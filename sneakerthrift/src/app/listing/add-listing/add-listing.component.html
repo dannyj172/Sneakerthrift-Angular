@@ -1,0 +1,40 @@
+<div class="create-container">
+
+    <!-- {errors && (
+    <Popup text={errors}></Popup>
+    )} -->
+
+    <form method="post" onSubmit={onSubmit} class="form">
+        <h1 class="form__title">Create Listing</h1>
+
+        <div class="form__div">
+            <input type="text" name="title" class="form__input" placeholder=" " />
+            <label class="form__label">Title</label>
+        </div>
+
+        <div class="form__div">
+            <input type="number" name="phonenumber" class="form__input" placeholder=" " />
+            <label class="form__label">Phone Number</label>
+        </div>
+
+        <div class="form__div">
+            <input type="number" name="price" class="form__input" placeholder=" " />
+            <label class="form__label">Price</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" name="imageUrl" class="form__input" placeholder=" " />
+            <label class="form__label">Image</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" name="description" class="form__input" placeholder=" " />
+            <label class="form__label">Description</label>
+        </div>
+
+        <div class="div__submit">
+            <input type="submit" class="form__button" value="CREATE" />
+        </div>
+
+    </form>
+</div>

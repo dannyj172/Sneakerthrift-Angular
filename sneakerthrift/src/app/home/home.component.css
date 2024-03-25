@@ -1,0 +1,305 @@
+/* Introduction */
+
+.home .introduction-container {
+    width: 85%;
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+.home .spacing>*+* {
+    margin-top: var(--spacer, 2rem);
+}
+
+.home .primary-title {
+    font-size: 4rem;
+    font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.home .home-introduction {
+    color: white;
+    text-align: center;
+    padding: 15em 0;
+    background: #222;
+}
+
+.home .home-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    padding: .5em 1.25em;
+    background: var(--complimentary);
+    border-radius: .25em;
+    -webkit-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    transition: transform 250ms ease-in-out, opacity 250ms linear;
+    transition: transform 250ms ease-in-out, opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    -moz-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    -ms-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    -o-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+}
+
+.home .home-button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    opacity: .9;
+}
+
+@supports (background-blend-mode: multiply) {
+    .home .home-introduction {
+        background: url(../../assets/shoe-6.png), radial-gradient(#444, #111);
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+/* Showcase */
+
+.home .showcase {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.home .showcase-img {
+    float: left;
+    margin: 30px;
+    width: 450px;
+    height: 450px;
+    border: solid var(--lightBlue) 10px;
+    border-radius: 30%;
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 30%;
+    -ms-border-radius: 30%;
+    -o-border-radius: 30%;
+}
+
+/* Latest Listings  */
+
+.home .listings-title {
+    text-align: center;
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.home .listings-title::after {
+    content: "";
+    background: var(--lightBlue);
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home .listings {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+.home .card {
+    width: min-content;
+    height: 500px;
+    position: relative;
+    padding: 20px;
+    margin: 20px 20px;
+    box-shadow: #569ca2 0px 0px 7px 3px inset;
+    transition: .4s ease;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+
+.home .card .listing-image {
+    width: 300px;
+    padding: 0 20px;
+}
+
+.home .card .listing-image img {
+    width: 100%;
+    max-height: 250px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+
+.home .card .listing-content h3 {
+    color: #222;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.home .card .listing-content p {
+    color: #444;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0 22px;
+    text-align: justify;
+    position: absolute;
+    bottom: 11%;
+    left: 7%;
+}
+
+.home .listing-button {
+    display: inline-block;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    width: 90%;
+    padding: .5em;
+    background: var(--complimentary);
+    border: none;
+    border-radius: .25em;
+    -webkit-border-radius: .25em;
+    -moz-border-radius: .25em;
+    -ms-border-radius: .25em;
+    -o-border-radius: .25em;
+    text-align: center;
+}
+
+.home .listing-button:hover {
+    background-color: var(--lightBlue);
+}
+
+/* Testimonials */
+
+.home .testimonials {
+    margin-top: 5rem;
+    display: flex;
+    gap: 1rem;
+    padding: 0 2rem;
+}
+
+
+.home .left-t {
+    display: flex;
+    flex: 1 1;
+    gap: 2rem;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.home .left-t>:nth-child(1) {
+    font-weight: bold;
+}
+
+.home .left-t>:nth-child(2),
+.home .left-t>:nth-child(3) {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.home .left-t>:nth-child(4) {
+    text-transform: none;
+    text-align: justify;
+    letter-spacing: 2px;
+    line-height: 40px;
+}
+
+.home .right-t {
+    flex: 1;
+    position: relative;
+}
+
+.home .right-t>img {
+    position: absolute;
+    width: 17rem;
+    height: 20rem;
+    object-fit: cover;
+    right: 8rem;
+    top: 2rem;
+}
+
+.home .right-t>:nth-child(1) {
+    position: absolute;
+    width: 17rem;
+    height: 20rem;
+    border: 2px solid var(--lightBlue);
+    background-color: transparent;
+    right: 9rem;
+    top: 0.9rem;
+}
+
+
+.home .right-t>:nth-child(2) {
+    position: absolute;
+    width: 17rem;
+    height: 19rem;
+    right: 7rem;
+    top: 4rem;
+    background: var(--lightBlue);
+}
+
+.home .arrows {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 3rem;
+    filter: invert(30%) sepia(30%) saturate(291%) hue-rotate(136deg) brightness(85%) contrast(87%);
+    -webkit-filter: invert(30%) sepia(30%) saturate(291%) hue-rotate(136deg) brightness(85%) contrast(87%);
+}
+
+.home .arrows>img {
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.home .left-t-coloredtext {
+    color: var(--complimentary);
+}
+
+/* Brands */
+
+.home .brands-title {
+    text-align: center;
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.home .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.home .brands {
+    margin: 100px auto;
+}
+
+.home .col-5 {
+    width: 160px;
+}
+
+.home .col-5 img {
+    width: 100%;
+    cursor: pointer;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.home .col-5 img:hover {
+    filter: grayscale(0);
+}

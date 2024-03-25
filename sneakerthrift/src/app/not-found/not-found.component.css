@@ -1,0 +1,18 @@
+.not-found {
+    background-color: #89b8bc4b;
+    display: grid;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+    padding: 200px 0 200px 0;
+}
+
+.not-found h2 {
+    font-size: 180px;
+    color: var(--complimentary);
+}
+
+.not-found h3 {
+    font-size: 60px;
+    color: var(--lightBlue);
+}

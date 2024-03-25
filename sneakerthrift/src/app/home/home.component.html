@@ -1,0 +1,115 @@
+<div class='home'>
+
+    <div class="home-introduction">
+        <div class="introduction-container spacing">
+            <h1 class="primary-title">Amazing shoes at an amazing price</h1>
+            <p>Number #1 shoe reseller globally. "SNEAKERTHRIFT" is here to provide you with the best footwear there is!
+            </p>
+            <a to="/catalog" class="btn home-button">See what we have</a>
+        </div>
+    </div>
+
+    <div class='showcase'>
+        <img class='showcase-img' src={showcase1} alt='showcase' />
+        <img class='showcase-img' src={showcase2} alt='showcase' />
+        <img class='showcase-img' src={showcase3} alt='showcase' />
+    </div>
+
+    <!-- {(listings && listings.length !== 0) && (
+    <div class="listings-container">
+        <h2 class="listings-title">Latest Listings</h2>
+        <div class='listings'>
+
+            {listings.map(x =>
+            <LatestListingsItem key={x._id} {...x} />)}
+
+        </div>
+
+    </div>
+    )} -->
+
+    <!-- <div class="testimonials">
+        <div class="left-t">
+            <span>Testimonials</span>
+            <span class='left-t-coloredtext'>What clients</span>
+            <span>say about us</span>
+            <motion.span key={selected} initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} exit={{
+                opacity: 0, x: 100 }} transition={transition}>
+                {testimonialsData[selected].review}
+            </motion.span>
+            <span>
+                <span style={{ color: "var(--lightBlue)" }}>
+                    {testimonialsData[selected].name}
+                </span>{" "}
+                - {testimonialsData[selected].status}
+            </span>
+        </div>
+        <div class="right-t">
+            <motion.div initial={{ opacity: 0, x: -100 }} transition={{ ...transition, duration: 2 }} whileInView={{
+                opacity: 1, x: 0 }}></motion.div>
+            <motion.div initial={{ opacity: 0, x: 100 }} transition={{ ...transition, duration: 2 }} whileInView={{
+                opacity: 1, x: 0 }}></motion.div>
+            <motion.img key={selected} initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity:
+                0, x: -100 }} transition={transition} src={testimonialsData[selected].image} alt="" />
+
+            <div class="arrows">
+                <img onClick={()=> {
+                selected === 0
+                ? setSelected(tLength - 1)
+                : setSelected((prev) => prev - 1)
+                }}
+                src={leftArrow} alt="" />
+
+                <img onClick={()=> {
+                selected === tLength - 1
+                ? setSelected(0)
+                : setSelected((prev) => prev + 1)
+                }}
+                src={rightArrow} alt="" />
+            </div>
+        </div>
+    </div> -->
+
+    <div class="brands">
+        <div class="brands-container">
+            <h2 class="brands-title">OUR TOP AFFILIATES</h2>
+            <div class="row">
+
+                <div class="col-5">
+                    <a target="_blank" to="https://www.vans.com/en-us?_sr=1">
+                        <img src={vans} alt="logo" />
+                    </a>
+                </div>
+
+                <div class="col-5">
+                    <a target="_blank" to="https://www.nike.com/bg/">
+                        <img src={nike} alt="logo" />
+                    </a>
+                </div>
+
+
+                <div class="col-5">
+                    <a target="_blank" to="https://www.adidas.com/us">
+                        <img src={adidas} alt="logo" />
+                    </a>
+                </div>
+
+
+                <div class="col-5">
+                    <a target="_blank" to="https://eu.supreme.com/pages/shop">
+                        <img src={supreme} alt="logo" />
+                    </a>
+                </div>
+
+
+                <div class="col-5">
+                    <a target="_blank" to="https://www.reebok.com/us">
+                        <img src={reebok} alt="logo" />
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,106 @@
+.create-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-container .form {
+    margin: 50px;
+}
+
+.create-container .form__title {
+    color: var(--complimentary);
+    font-weight: bold;
+    margin-bottom: 2.2rem;
+    font-size: var(--big-font-size);
+}
+
+.create-container .form__div {
+    position: relative;
+    height: 48px;
+    margin-bottom: 3.5rem;
+}
+
+.create-container .form__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 100%;
+    font-size: var(--normal-font-size);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--complimentary);
+    outline: none;
+    background: none;
+    z-index: 1;
+    padding-left: 40px;
+    color: var(--complimentary);
+}
+
+
+.create-container .margin__diff {
+    margin-bottom: 0;
+}
+
+
+.create-container .form__label {
+    position: absolute;
+    left: 2.4rem;
+    top: 0.5rem;
+    padding: 0 .25rem;
+    background-color: #fff;
+    font-size: 1.3rem;
+    color: var(--lightBlue);
+    transition: .3s;
+    z-index: 1;
+    pointer-events: none;
+    background: none;
+}
+
+
+.create-container .form__button {
+    position: relative;
+    width: 440px;
+    height: 60px;
+    margin-top: 40px;
+    border: none;
+    background-color: var(--complimentary);
+    border-radius: 10px;
+    font-size: var(--normal-font-size);
+    color: white;
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.create-container .form__button:hover {
+    transform: scale(103%);
+    transform: translate(-7px, -7px);
+    box-shadow: 7px 7px #12192c46;
+}
+
+.create-container .form__input:focus+.form__label {
+    top: -1.8rem;
+    left: 2.3rem;
+    color: var(--complimentary);
+}
+
+.create-container .form__input:focus {
+    border-bottom: 1px solid var(--complimentary);
+}
+
+.create-container .form__icon.focus {
+    color: var(--complimentary);
+    transition: .3s ease-in-out;
+}
+
+.create-container .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
+    top: -1.8rem;
+    left: 2.3rem;
+    color: var(--complimentary);
+}
+
+.create-container .form__input:not(:placeholder-shown).form__input:not(:focus) {
+    border-bottom: 1px solid var(--complimentary);
+}

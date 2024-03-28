@@ -4,35 +4,41 @@
     <Popup text={errors}></Popup>
     )} -->
 
-    <form method="post" onSubmit={onSubmit} class="form">
+    <form #form="ngForm" (ngSubmit)="addListing(form)" class="form">
         <h1 class="form__title">Create Listing</h1>
 
         <div class="form__div">
-            <input type="text" name="title" class="form__input" placeholder=" " />
-            <label class="form__label">Title</label>
+            <input type="text" name="listingName" class="form__input" placeholder=" " #inputListingName="ngModel"
+                ngModel />
+            <label class="form__label" for="listingName">Title</label>
         </div>
 
         <div class="form__div">
-            <input type="number" name="phonenumber" class="form__input" placeholder=" " />
-            <label class="form__label">Phone Number</label>
+            <input type="text" name="listingPhonenumber" class="form__input" placeholder=" "
+                #inputListingPhonenumber="ngModel" ngModel />
+            <label class="form__label" for="listingPhonenumber">Phone Number</label>
         </div>
 
         <div class="form__div">
-            <input type="number" name="price" class="form__input" placeholder=" " />
-            <label class="form__label">Price</label>
+            <input type="number" name="listingPrice" class="form__input" placeholder=" " #inputListingPrice="ngModel"
+                ngModel />
+            <label class="form__label" for="listingPrice">Price</label>
         </div>
 
         <div class="form__div">
-            <input type="text" name="imageUrl" class="form__input" placeholder=" " />
-            <label class="form__label">Image</label>
+            <input type="text" name="listingImageUrl" class="form__input" placeholder=" "
+                #inputListingImageUrl="ngModel" ngModel />
+            <label class="form__label" for="listingImageUrl">Image</label>
         </div>
 
         <div class="form__div">
-            <input type="text" name="description" class="form__input" placeholder=" " />
-            <label class="form__label">Description</label>
+            <input type="text" name="listingDescription" class="form__input" placeholder=" "
+                #inputListingDescription="ngModel" ngModel />
+            <label class="form__label" for="listingDescription">Description</label>
         </div>
 
         <div class="div__submit">
+            <!-- <input class="form__button" value="CREATE" /> -->
             <input type="submit" class="form__button" value="CREATE" />
         </div>
 

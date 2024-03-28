@@ -9,6 +9,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListingModule } from './listing/listing.module';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { AppInterceptorProvider } from './app.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,9 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     SharedModule,
     HttpClientModule,
     ListingModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [AppInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

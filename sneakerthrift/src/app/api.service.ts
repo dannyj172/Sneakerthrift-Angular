@@ -11,17 +11,18 @@ export class ApiService {
 
   getListings() {
     const { apiUrl } = environment;
-    return this.http.get<Listing[]>(`${apiUrl}/listings`);
+    return this.http.get<Listing[]>(`${apiUrl}/data/listings`);
   }
 
   getListing(id: string) {
     const { apiUrl } = environment;
-    return this.http.get<Listing>(`${apiUrl}/listings/${id}`);
+    return this.http.get<Listing>(`${apiUrl}/data/listings/${id}`);
   }
 
-  createListing(themeName: string, postText: string) {
+  createListing(listingName: string, listingPhonenumber: string,listingPrice: string, listingImageUrl: string, listingDescription: string) {
     const { apiUrl } = environment;
-  return this.http.post<Listing>(`${apiUrl}/listings`, {themeName,postText});
+    console.log(listingPhonenumber)
+  return this.http.post<Listing>(`${apiUrl}/data/listings`, {listingName, listingPhonenumber,listingPrice, listingImageUrl, listingDescription})
   }
 
   // getPosts(limit?: number) {

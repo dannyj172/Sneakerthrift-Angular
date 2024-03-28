@@ -4,16 +4,16 @@
     )} -->
     <div class="listing">
         <div class="listing-details">
-            <img src="../../../assets/" alt="img" />
+            <img src={{listing.listingImageUrl}} alt="img" />
         </div>
 
         <div class="listing-details">
-            <h1>Nike Shoes</h1>
-            <h2 class="phone-number">0897621728</h2>
-            <h4>$99</h4>
+            <h1>{{listing.listingName}}</h1>
+            <h2 class="phone-number">{{listing.listingPhonenumber}}</h2>
+            <h4>${{listing.listingPrice}}</h4>
             <h3>Description <i class="fa fa-indent" aria-hidden="true"></i></h3>
             <br />
-            <p>Size 43 black Nike shoes. Brand new and perfect condition. Call me for extra information!</p>
+            <p>{{listing.listingDescription}}</p>
             <!-- {isOwner && (
             <>
                 <Link to={`/catalog/${listing._id}/edit`} class="edit-button">Edit</Link>

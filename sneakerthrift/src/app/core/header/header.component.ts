@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  
+  constructor(private userService: UserService,private router: Router) {}
+
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+  }
+
+  logout() {
+    this.userService.logout().subscribe({
+      next: () => {this.router.navigate(['/auth/login'])},
+      error: () => {this.router.navigate(['/auth/login'])}
+    })
+  }
 }

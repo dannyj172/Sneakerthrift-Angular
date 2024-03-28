@@ -13,13 +13,19 @@
 
         <div class='listings'>
 
-            <!-- {listings.map(x =>
-            <CatalogItem key={x._id} {...x} />)}
+            <div *ngFor="let listing of listings" class="card">
+                <div class="listing-image">
+                    <img src={{listing.listingImageUrl}} alt="..." />
+                </div>
+                <div class="listing-content">
+                    <h3>{{listing.listingName}}</h3>
+                    <p>${{listing.listingPrice}}</p>
+                    <!-- add when it was created like in softuni project -->
+                    <a [routerLink]="listing._id" class="btn listing-button">View Listing</a>
+                </div>
+            </div>
 
-            {listings.length === 0
-            &&
-            ( -->
-            <div class='no-listings'>
+            <div *ngIf="!listings.length" class='no-listings'>
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em"
                     width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill="none" stroke="#000" strokeWidth="2"

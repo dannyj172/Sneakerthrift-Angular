@@ -11,11 +11,11 @@ export class UserService implements OnDestroy {
   private user$ = this.user$$.asObservable();
 
   user: UserForAuth | undefined;
-  USER_KEY = '[user]';
 
   userSubscription : Subscription;
 
   get isLogged(): boolean {
+    console.log(this.user)
     return !!this.user;
   }
 
@@ -27,21 +27,35 @@ export class UserService implements OnDestroy {
 
   login(email:string,password:string) {
     return this.http
-    .post<UserForAuth>('/login',{email,password})
-    .pipe(tap((user)=> this.user$$.next(user)))
+    .post<UserForAuth>('http://localhost:3030/users/login',{email,password})
+    .pipe(tap((user)=> this.user$$.next(user))).pipe(tap(user=> {
+      localStorage.setItem('accessToken',user.accessToken)
+      localStorage.setItem('email',user.email)
+      localStorage.setItem('userId',user._id)
+    }))
   }
 
-  register(username:string, email:string, tel:string,password:string, rePassword: string) {
+  register( email:string, password:string, rePassword: string) {
   
     return this.http
-    .post<UserForAuth>('/register',{username,email,tel,password,rePassword})
-    .pipe(tap((user)=> this.user$$.next(user)))
+    .post<UserForAuth>('http://localhost:3030/users/register',{email,password,rePassword})
+    .pipe(tap((user)=> this.user$$.next(user))).pipe(tap(user=> {
+      localStorage.setItem('accessToken',user.accessToken)
+      localStorage.setItem('email',user.email)
+      localStorage.setItem('_id',user._id)
+    }))
   }
 
   logout() {
     return this.http
-    .post('/logout', {})
-    .pipe(tap(()=> this.user$$.next(undefined)))
+    .post('http://localhost:3030/users/logout', {})
+    .pipe(
+      tap(() => {
+        localStorage.clear()
+        this.user$$.next(undefined)
+      })
+      )
+    // .pipe(tap(()=> this.user$$.next(undefined)))
   }
 
   // getProfile() {

@@ -15,8 +15,13 @@ export class UserService implements OnDestroy {
   userSubscription : Subscription;
 
   get isLogged(): boolean {
-    console.log(this.user)
+    // return !!this.user;
+    return !!localStorage.getItem('accessToken')
+  }
+
+  get isLog(): boolean {
     return !!this.user;
+    // return !!localStorage.getItem('accessToken')
   }
 
   constructor(private http: HttpClient) {
@@ -58,11 +63,9 @@ export class UserService implements OnDestroy {
     // .pipe(tap(()=> this.user$$.next(undefined)))
   }
 
-  // getProfile() {
-  //   return this.http
-  //   .get<UserForAuth>('/api/users/profile')
-  //   .pipe(tap((user)=> this.user$$.next(user)));
-  // }
+  getUser(userId: string | null) {
+    return this.http.get<UserForAuth>(`http://localhost:3030/users/?where=_ownerId%3D%22${userId}%22`).pipe(tap((user)=> this.user$$.next(user)));
+  }
 
   // updateProfile(username: string, email: string, tel?: string){
   //   return this.http

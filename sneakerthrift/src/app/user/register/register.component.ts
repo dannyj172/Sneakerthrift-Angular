@@ -48,7 +48,7 @@ export class RegisterComponent {
     this.userService
       .register(email!, password!, rePassword!)
       .subscribe(() => {
-        this.router.navigate(['/listings']);
+        this.router.navigate(['/home']);
       });
   }
 }

@@ -18,8 +18,7 @@ export class AddListingComponent {
     }
 
     const {listingName, listingPhonenumber,listingPrice, listingImageUrl, listingDescription} = form.value;
-    console.log(listingPhonenumber)
-    console.log(listingName)
+
     this.apiService.createListing(listingName, listingPhonenumber,listingPrice, listingImageUrl, listingDescription).subscribe(()=> {
       this.router.navigate(['/listings']);
     })

@@ -14,68 +14,77 @@
             <h3>Description <i class="fa fa-indent" aria-hidden="true"></i></h3>
             <br />
             <p>{{listing.listingDescription}}</p>
-            <!-- {isOwner && (
-            <>
-                <Link to={`/catalog/${listing._id}/edit`} class="edit-button">Edit</Link>
-                <Link onClick={showDeleteConfirm} class="delete-button">Delete</Link>
-            </>
-            )} -->
+            <ng-container *ngIf="isListingOwner">
+                <a routerLink="/listings/{{listing._id}}/edit" class="edit-button">Edit</a>
+                <a (click)="showDeleteConfirmation()" class="delete-button">Delete</a>
+            </ng-container>
+
         </div>
     </div>
 
+    <ng-container *ngIf="deleteConfirmation">
+        <div class="listing-delete-wrapper">
+            <div class='listing-delete'>
+                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
+                    </path>
+                    <path
+                        d="M464 688a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z">
+                    </path>
+                </svg>
 
-    <div class="listing-delete-wrapper hidden">
-        <div class='listing-delete'>
-            <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" height="1em"
-                width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
-                </path>
-                <path
-                    d="M464 688a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z">
-                </path>
-            </svg>
-
-            <h1>Are you sure?</h1>
-            <p>Selecting confirm will delete listing.title.</p>
-            <div class="listing-delete-buttons">
-                <button onClick={hideDeleteConfirm} class="cancel-button">Cancel</button>
-                <button onClick={onDeleteClick} class="confirm-button">Confirm</button>
+                <h1>Are you sure?</h1>
+                <p>Selecting confirm will delete {{listing.listingName}}</p>
+                <div class="listing-delete-buttons">
+                    <button (click)="hideDeleteConfirmation()" class="cancel-button">Cancel</button>
+                    <button (click)="onListingDeleteClick(listing._id)" class="confirm-button">Confirm</button>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-container>
 
-    <!-- <div class="listing-comment-section">
+    <ng-container *ngIf="comments?.length > 0 || isLoggedIn">
+        <div class="listing-comment-section">
 
-        {((listing.comments && listing.comments.length !== 0) || isAuthenticated) && (
-        <h1>Comments:</h1>
-        )}
+            <h1>Comments:</h1>
 
-        {isAuthenticated &&
-        <AddComment onCommentSubmit={onCommentSubmit} />}
+            <ng-container *ngIf="isLoggedIn">
+                <div class="create-comment">
+                    <form class="form" [formGroup]="commentForm" (ngSubmit)="onComment(listing._id)">
+                        <textarea name="comment" class="comment-area" placeholder="Add a comment..."
+                            formControlName="comment"></textarea>
+                        <div class="button-div">
+                            <input class="comment-button" type="submit" value="Add Comment" />
+                        </div>
+                    </form>
+                </div>
+            </ng-container>
 
-        <div class="comments">
-            <ul>
-                {listing.comments && listing.comments.map(x => (
-                <li key={x._id} class='comment'>
-                    <p>
-                        <span>{x.author.email}:</span> {x.comment}
-                        {userId === x._ownerId && (
-                        <svg onClick={()=> onCommentDelete(x._id)} stroke="currentColor" fill="currentColor"
-                            strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em"
-                            xmlns="http://www.w3.org/2000/svg"><path fill="none"
-                                d="M17.004 20L17.003 8h-1-8-1v12H17.004zM13.003 10h2v8h-2V10zM9.003 10h2v8h-2V10zM9.003 4H15.003V6H9.003z">
-                            </path>
-                            <path
-                                d="M5.003,20c0,1.103,0.897,2,2,2h10c1.103,0,2-0.897,2-2V8h2V6h-3h-1V4c0-1.103-0.897-2-2-2h-6c-1.103,0-2,0.897-2,2v2h-1h-3 v2h2V20z M9.003,4h6v2h-6V4z M8.003,8h8h1l0.001,12H7.003V8H8.003z">
-                            </path>
-                            <path d="M9.003 10H11.003V18H9.003zM13.003 10H15.003V18H13.003z"></path>
-                        </svg>
-                        )}
-                    </p>
-                </li>
-                ))}
-            </ul>
+            <div class="comments">
+                <ul>
+                    <li class='comment' *ngFor="let comment of comments">
+                        <p>
+                            <span>{{comment.author.email}}:</span> {{comment.comment}}
+                            <ng-container *ngIf="comment._ownerId === userId">
+                                <svg (click)="onCommentDeleteClick(comment._id)" stroke="currentColor"
+                                    fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="none"
+                                        d="M17.004 20L17.003 8h-1-8-1v12H17.004zM13.003 10h2v8h-2V10zM9.003 10h2v8h-2V10zM9.003 4H15.003V6H9.003z">
+                                    </path>
+                                    <path
+                                        d="M5.003,20c0,1.103,0.897,2,2,2h10c1.103,0,2-0.897,2-2V8h2V6h-3h-1V4c0-1.103-0.897-2-2-2h-6c-1.103,0-2,0.897-2,2v2h-1h-3 v2h2V20z M9.003,4h6v2h-6V4z M8.003,8h8h1l0.001,12H7.003V8H8.003z">
+                                    </path>
+                                    <path d="M9.003 10H11.003V18H9.003zM13.003 10H15.003V18H13.003z"></path>
+                                </svg>
+                            </ng-container>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
         </div>
-    </div> -->
+    </ng-container>
 </div>

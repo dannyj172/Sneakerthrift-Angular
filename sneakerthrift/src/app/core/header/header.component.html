@@ -8,9 +8,10 @@
         <a class='links' routerLink="/">Home</a>
         <a class='links' routerLink="/listings">Catalog</a>
         <ng-container *ngIf="isLoggedIn">
-            <!-- <a class='links' routerLink="/my-listings">My Listings</a> -->
+            <a class='links' routerLink="/my-listings">My Listings</a>
             <a class='links' routerLink="/add-listing">Create Listing</a>
             <a class='links' (click)="logout()">Logout</a>
+
         </ng-container>
         <ng-container *ngIf="!isLoggedIn">
             <a class='links' routerLink="/auth/login">Login</a>

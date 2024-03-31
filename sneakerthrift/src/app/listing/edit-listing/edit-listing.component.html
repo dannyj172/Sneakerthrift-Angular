@@ -1,0 +1,44 @@
+<!-- {errors && (
+    <Popup text={errors}></Popup>
+    )} -->
+<div class="edit-container">
+
+    <form [formGroup]="listingForm" (ngSubmit)="editListing()" class="form">
+        <h1 class="form__title">Edit Listing</h1>
+
+        <div class="form__div">
+            <input type="text" name="listingName" class="form__input" placeholder=" " formControlName="listingName"
+                [value]="listing.listingName" />
+            <label class="form__label" for="listingName">Title</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" name="listingPhonenumber" class="form__input" placeholder=" "
+                formControlName="listingPhonenumber" [value]="listing.listingPhonenumber" />
+            <label class="form__label" for="listingPhonenumber">Phone Number</label>
+        </div>
+
+        <div class="form__div">
+            <input type="number" name="listingPrice" class="form__input" placeholder=" " formControlName="listingPrice"
+                [value]="listing.listingPrice" />
+            <label class="form__label" for="listingPrice">Price</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" name="listingImageUrl" class="form__input" placeholder=" "
+                formControlName="listingImageUrl" [value]="listing.listingImageUrl" />
+            <label class="form__label" for="listingImageUrl">Image</label>
+        </div>
+
+        <div class="form__div">
+            <input type="text" name="listingDescription" class="form__input" placeholder=" "
+                formControlName="listingDescription" [value]="listing.listingDescription" />
+            <label class="form__label" for="listingDescription">Description</label>
+        </div>
+
+        <div class="div__submit">
+            <input type="submit" class="form__button" value="EDIT" />
+        </div>
+
+    </form>
+</div>

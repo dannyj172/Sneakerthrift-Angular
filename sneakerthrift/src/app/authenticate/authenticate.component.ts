@@ -8,19 +8,24 @@ import { UserService } from '../user/user.service';
 })
 export class AuthenticateComponent implements OnInit{
   isAuthenticating = true;
+  userId=localStorage.getItem('userId')
   constructor (private userService: UserService){}
 
   ngOnInit(): void {
-      // this.userService.getProfile().subscribe({
-      //   next: ()=> {
-      //     this.isAuthenticating=false;
-      //   },
-      //   error: ()=> {
-      //     this.isAuthenticating=false;
-      //   },
-      //   complete: ()=> {
-      //     this.isAuthenticating=false;
-      //   },
-      // })
-  }
+
+    setTimeout(() => {
+      
+      this.userService.getUser(this.userId).subscribe({
+        next: ()=> {
+          this.isAuthenticating=false;
+        },
+        error: ()=> {
+          this.isAuthenticating=false;
+        },
+        complete: ()=> {
+          this.isAuthenticating=false;
+        },
+      })
+    }, 500);
 }
+  }

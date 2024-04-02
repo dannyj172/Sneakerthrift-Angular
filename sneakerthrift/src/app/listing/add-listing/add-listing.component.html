@@ -1,45 +1,50 @@
 <div class="create-container">
 
-    <!-- {errors && (
-    <Popup text={errors}></Popup>
-    )} -->
 
     <form #form="ngForm" (ngSubmit)="addListing(form)" class="form">
         <h1 class="form__title">Create Listing</h1>
 
         <div class="form__div">
             <input type="text" name="listingName" class="form__input" placeholder=" " #inputListingName="ngModel"
-                ngModel />
+                ngModel required minlength="5" maxlength="50" />
             <label class="form__label" for="listingName">Title</label>
         </div>
 
         <div class="form__div">
             <input type="text" name="listingPhonenumber" class="form__input" placeholder=" "
-                #inputListingPhonenumber="ngModel" ngModel />
+                #inputListingPhonenumber="ngModel" ngModel required minlength="5" maxlength="15" />
             <label class="form__label" for="listingPhonenumber">Phone Number</label>
         </div>
 
         <div class="form__div">
             <input type="number" name="listingPrice" class="form__input" placeholder=" " #inputListingPrice="ngModel"
-                ngModel />
+                ngModel required min="1" />
             <label class="form__label" for="listingPrice">Price</label>
         </div>
 
         <div class="form__div">
             <input type="text" name="listingImageUrl" class="form__input" placeholder=" "
-                #inputListingImageUrl="ngModel" ngModel />
+                #inputListingImageUrl="ngModel" ngModel required minlength="5" />
             <label class="form__label" for="listingImageUrl">Image</label>
         </div>
 
         <div class="form__div">
             <input type="text" name="listingDescription" class="form__input" placeholder=" "
-                #inputListingDescription="ngModel" ngModel />
+                #inputListingDescription="ngModel" required ngModel minlength="5" />
             <label class="form__label" for="listingDescription">Description</label>
         </div>
 
+
+        <div class="errors"
+            *ngIf="(inputListingName.touched && inputListingName.errors) || (inputListingPhonenumber.touched && inputListingPhonenumber.errors) || (inputListingPrice.touched && inputListingPrice.errors) || (inputListingImageUrl.touched && inputListingImageUrl.errors) || (inputListingDescription.touched && inputListingDescription.errors) ">
+            <p class="error">
+                All input fields must be valid!
+            </p>
+        </div>
+
         <div class="div__submit">
-            <!-- <input class="form__button" value="CREATE" /> -->
-            <input type="submit" class="form__button" value="CREATE" />
+            <input [disabled]="form.invalid" [style]="{ opacity: form.invalid ? '50%' : '' }" type="submit"
+                class="form__button" value="CREATE" />
         </div>
 
     </form>

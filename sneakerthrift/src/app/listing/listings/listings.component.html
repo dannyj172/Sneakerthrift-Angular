@@ -3,7 +3,7 @@
         <h2 class="listings-title">Catalog</h2>
 
         <div class="listings-sort">
-            <select name="sort" class="sort" onChange={onOptionChange}>
+            <select name="sort" class="sort" [(ngModel)]="selectModel" (change)="selectionChange()">
                 <option label='Newest' value="newest"></option>
                 <option label='Oldest' value="oldest"></option>
                 <option label='Price Up' value="price up"></option>
@@ -18,9 +18,8 @@
                     <img src={{listing.listingImageUrl}} alt="..." />
                 </div>
                 <div class="listing-content">
-                    <h3>{{listing.listingName}}</h3>
+                    <h3>{{listing.listingName | slice:40}}</h3>
                     <p>${{listing.listingPrice}}</p>
-                    <!-- add when it was created like in softuni project -->
                     <a [routerLink]="listing._id" class="btn listing-button">View Listing</a>
                 </div>
             </div>

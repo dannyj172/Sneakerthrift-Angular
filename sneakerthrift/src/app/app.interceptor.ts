@@ -5,10 +5,11 @@ import { environment } from "src/environments/environment.development";
 import { Router } from "@angular/router";
 import { ErrorService } from "./core/error/error.service";
 
-@Injectable()
+const {apiUrl} = environment
 
+@Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    apiUrl = environment.apiUrl;
+    API = '/users'
     constructor(private errorService: ErrorService, private router: Router) {}
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

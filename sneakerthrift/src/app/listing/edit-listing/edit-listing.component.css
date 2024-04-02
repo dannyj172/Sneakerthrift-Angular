@@ -104,3 +104,17 @@
 .edit-container .form__input:not(:placeholder-shown).form__input:not(:focus) {
     border-bottom: 1px solid var(--complimentary);
 }
+
+
+.errors{
+    color: var(--complimentary);
+    margin-top: 2.4rem;
+    border: 1px solid var(--complimentary);
+    background-color: rgb(199, 232, 243);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.error{
+    margin-left: 0.5rem;
+}

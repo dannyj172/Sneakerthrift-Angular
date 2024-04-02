@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
@@ -12,6 +12,7 @@ export class AddListingComponent {
   constructor(private apiService: ApiService,private router: Router) {
 
   }
+
   addListing(form: NgForm) {
     if (form.invalid) {
       return;

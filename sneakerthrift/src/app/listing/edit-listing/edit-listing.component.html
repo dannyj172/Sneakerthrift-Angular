@@ -1,6 +1,3 @@
-<!-- {errors && (
-    <Popup text={errors}></Popup>
-    )} -->
 <div class="edit-container">
 
     <form [formGroup]="listingForm" (ngSubmit)="editListing()" class="form">
@@ -36,8 +33,19 @@
             <label class="form__label" for="listingDescription">Description</label>
         </div>
 
+        <div class="errors" *ngIf="((listingForm?.get('listingName')?.touched && listingForm.get('listingName')?.errors))
+            || ((listingForm?.get('listingPhonenumber')?.touched && listingForm.get('listingPhonenumber')?.errors))
+            || ((listingForm?.get('listingPrice')?.touched && listingForm.get('listingPrice')?.errors))
+            || ((listingForm?.get('listingImageUrl')?.touched && listingForm.get('listingImageUrl')?.errors))
+            || ((listingForm?.get('listingDescription')?.touched && listingForm.get('listingDescription')?.errors)) ">
+            <p class="error">
+                All input fields must be valid!
+            </p>
+        </div>
+
         <div class="div__submit">
-            <input type="submit" class="form__button" value="EDIT" />
+            <input [disabled]="listingForm.invalid" [style]="{ opacity: listingForm.invalid ? '50%' : '' }"
+                type="submit" class="form__button" value="EDIT" />
         </div>
 
     </form>

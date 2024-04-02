@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListingModule } from './listing/listing.module';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { AppInterceptorProvider } from './app.interceptor';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

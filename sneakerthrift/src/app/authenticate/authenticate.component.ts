@@ -15,7 +15,7 @@ export class AuthenticateComponent implements OnInit{
 
     setTimeout(() => {
       
-      this.userService.getUser(this.userId).subscribe({
+      this.userService.getUser().subscribe({
         next: ()=> {
           this.isAuthenticating=false;
         },

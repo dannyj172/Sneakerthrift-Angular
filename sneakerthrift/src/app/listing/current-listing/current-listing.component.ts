@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/api.service';
 import { Comment } from 'src/app/types/comment';
 import { Listing } from 'src/app/types/listing';
 import { UserService } from 'src/app/user/user.service';
+import { ListingModule } from '../listing.module';
 
 @Component({
   selector: 'app-current-listing',
@@ -45,12 +46,13 @@ export class CurrentListingComponent implements OnInit {
       
       this.apiService.getListing(id).subscribe((listing)=> {
         this.listing = listing;
-        this.isListingOwner = listing._ownerId == this.userId
+        this.isListingOwner = listing._ownerId == localStorage.getItem('userId')
+        console.log(listing._ownerId)
+        console.log(this.userId)
       })
 
       this.apiService.getAllComments(id).subscribe((comments)=> {
         this.comments = comments;
-        console.log(comments)
         this.buildForm(); 
       })
     })
@@ -87,7 +89,7 @@ export class CurrentListingComponent implements OnInit {
     // Access form values using value property
     const formData = this.commentForm.value;
 
-    this.apiService.createComment(listingId, formData.comment).subscribe((data)=> console.log(data))
+    this.apiService.createComment(listingId, formData.comment).subscribe()
     this.apiService.getAllComments(listingId).subscribe((comments)=> {
       this.comments = comments;
     })

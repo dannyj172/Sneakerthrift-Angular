@@ -2,15 +2,6 @@
     <div class="listings-container">
         <h2 class="listings-title">My Listings</h2>
 
-        <div class="listings-sort">
-            <select name="sort" class="sort" onChange={onOptionChange}>
-                <option label='Newest' value="newest"></option>
-                <option label='Oldest' value="oldest"></option>
-                <option label='Price Up' value="price up"></option>
-                <option label='Price Down' value="price down"></option>
-            </select>
-        </div>
-
         <div class='listings'>
 
             <div *ngFor="let listing of listings" class="card">
@@ -20,8 +11,7 @@
                 <div class="listing-content">
                     <h3>{{listing.listingName}}</h3>
                     <p>${{listing.listingPrice}}</p>
-                    <!-- add when it was created like in softuni project -->
-                    <a [routerLink]="listing._id" class="btn listing-button">View Listing</a>
+                    <a (click)="navigateToListing(listing._id)" class="btn listing-button">View Listing</a>
                 </div>
             </div>
 

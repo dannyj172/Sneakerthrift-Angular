@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MinLengthValidator, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Listing } from 'src/app/types/listing';
@@ -12,11 +12,11 @@ import { Listing } from 'src/app/types/listing';
 export class EditListingComponent implements OnInit{
 
   listingForm: FormGroup = this.fb.group({
-    listingName: ['', Validators.required],
-    listingPhonenumber: ['', Validators.required],
-    listingPrice: ['', Validators.required],
-    listingImageUrl: ['',Validators.required],
-    listingDescription: ['',Validators.required]
+    listingName: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(50)]],
+    listingPhonenumber: ['', [Validators.required,Validators.minLength(5)]],
+    listingPrice: ['', [Validators.required,Validators.min(1)]],
+    listingImageUrl: ['',[Validators.required,Validators.minLength(5)]],
+    listingDescription: ['',[Validators.required,Validators.minLength(5)]]
   });
   listing: Listing = {
     _id: '',
@@ -50,13 +50,14 @@ ngOnInit() {
 
 buildForm() {
   this.listingForm = this.fb.group({
-    listingName: [this.listing.listingName, Validators.required],
-    listingPhonenumber: [this.listing.listingPhonenumber, Validators.required],
-    listingPrice: [this.listing.listingPrice, Validators.required],
-    listingImageUrl: [this.listing.listingImageUrl], // Optional validation
-    listingDescription: [this.listing.listingDescription]
+    listingName: [this.listing.listingName, [Validators.required, Validators.minLength(5),Validators.maxLength(50)]],
+    listingPhonenumber: [this.listing.listingPhonenumber,[ Validators.required,Validators.minLength(5)]],
+    listingPrice: [this.listing.listingPrice, [Validators.required,Validators.min(1)]],
+    listingImageUrl: [this.listing.listingImageUrl,[Validators.required,Validators.minLength(5)]],
+    listingDescription: [this.listing.listingDescription,[Validators.required,Validators.minLength(5)]]
   });
 }
+
 
 editListing() {
   if (this.listingForm.invalid) {

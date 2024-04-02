@@ -15,13 +15,7 @@ export class UserService implements OnDestroy {
   userSubscription : Subscription;
 
   get isLogged(): boolean {
-    // return !!this.user;
     return !!localStorage.getItem('accessToken')
-  }
-
-  get isLog(): boolean {
-    return !!this.user;
-    // return !!localStorage.getItem('accessToken')
   }
 
   constructor(private http: HttpClient) {
@@ -47,7 +41,7 @@ export class UserService implements OnDestroy {
     .pipe(tap((user)=> this.user$$.next(user))).pipe(tap(user=> {
       localStorage.setItem('accessToken',user.accessToken)
       localStorage.setItem('email',user.email)
-      localStorage.setItem('_id',user._id)
+      localStorage.setItem('userId',user._id)
     }))
   }
 
@@ -60,18 +54,12 @@ export class UserService implements OnDestroy {
         this.user$$.next(undefined)
       })
       )
-    // .pipe(tap(()=> this.user$$.next(undefined)))
   }
 
-  getUser(userId: string | null) {
-    return this.http.get<UserForAuth>(`http://localhost:3030/users/?where=_ownerId%3D%22${userId}%22`).pipe(tap((user)=> this.user$$.next(user)));
+  getUser() {
+      // return this.http.get<UserForAuth>(`http://localhost:3030/users/?where=_ownerId%3D%22${userId}%22`).pipe(tap((user)=> this.user$$.next(user)))
+      return this.http.get<UserForAuth>(`http://localhost:3030/users/me`).pipe(tap((user)=> this.user$$.next(user)))
   }
-
-  // updateProfile(username: string, email: string, tel?: string){
-  //   return this.http
-  //   .put<UserForAuth>('/api/users/profile', {username, email, tel})
-  //   .pipe(tap(user=>this.user$$.next(user)))
-  // }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();

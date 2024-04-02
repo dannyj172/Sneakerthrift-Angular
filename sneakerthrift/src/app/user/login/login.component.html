@@ -1,13 +1,10 @@
 <div class="login-container">
 
-    <!-- {errors && (
-    <Popup text={errors}></Popup>
-    )} -->
-
     <img src="../../../assets/Authentication_Two Color.svg" alt="img" class="login__image" />
 
     <form class="form" #form="ngForm" (ngSubmit)="login(form)">
         <h1 class="form__title">Login</h1>
+
         <div class="form__div">
             <i><svg class="form__icon" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -19,10 +16,9 @@
                         fill="currentColor"></path>
                 </svg></i>
             <input type="email" name="email" class="form__input" placeholder=" " value="" ngModel #inputEmail="ngModel"
-                [appEmail]="domains" />
+                required [appEmail]="domains" />
             <label class="form__label">Email</label>
         </div>
-
         <div class="form__div margin__diff">
             <i><svg class="form__icon" id="DETECT" stroke="currentColor" fill="currentColor" strokeWidth="0"
                     viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -30,12 +26,34 @@
                         d="M12,2C9.243,2,7,4.243,7,7v2H6c-1.103,0-2,0.897-2,2v9c0,1.103,0.897,2,2,2h12c1.103,0,2-0.897,2-2v-9c0-1.103-0.897-2-2-2 h-1V7C17,4.243,14.757,2,12,2z M9,7c0-1.654,1.346-3,3-3s3,1.346,3,3v2H9V7z M18.002,20H13v-2.278c0.595-0.347,1-0.985,1-1.722 c0-1.103-0.897-2-2-2s-2,0.897-2,2c0,0.736,0.405,1.375,1,1.722V20H6v-9h12L18.002,20z">
                     </path>
                 </svg></i>
-            <input type="password" name="password" class="form__input" placeholder=" " value="" ngModel
-                #inputPassword="ngModel" />
+            <input type="password" name="password" class="form__input" placeholder=" " value="" ngModel required
+                #inputPassword="ngModel" minlength="5" />
             <label class="form__label">Password</label>
         </div>
+
+        <div class="errors"
+            *ngIf="(inputEmail.touched && inputEmail.errors) || (inputPassword.touched && inputPassword.errors)">
+            <ng-container *ngIf="inputEmail.touched">
+                <p class="error" *ngIf="inputEmail.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+                    Email is not valid!
+                </p>
+            </ng-container>
+            <ng-container *ngIf="inputPassword.touched">
+                <p class="error" *ngIf="inputPassword.errors?.['required']">
+                    Password is required!
+                </p>
+                <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+                    Password is not long enough!
+                </p>
+            </ng-container>
+        </div>
+
         <div class="div__submit">
-            <input type="submit" class="form__button" />
+            <input [disabled]="form.invalid" [style]="{ opacity: form.invalid ? '50%' : '' }" type="submit"
+                class="form__button" />
         </div>
 
     </form>

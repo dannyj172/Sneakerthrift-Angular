@@ -19,3 +19,22 @@
     box-shadow: 0 5px 10px rgb(204,204,204);
     background-color: rgba(0, 127, 201, 0.699);
 }
+
+.error {
+    background-color: #89b8bc4b;
+    display: grid;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+    padding: 200px 0 200px 0;
+}
+
+.error h2 {
+    font-size: 180px;
+    color: var(--complimentary);
+}
+
+.error h3 {
+    font-size: 60px;
+    color: var(--lightBlue);
+}

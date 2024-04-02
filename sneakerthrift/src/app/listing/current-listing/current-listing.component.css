@@ -311,3 +311,16 @@
 
 /* comment field */
 
+.comment-div {
+    display: flex;
+}
+.comment-date {
+    float:right;
+    margin-left: auto;
+    font-size:18px;
+    color:#9aa4a5
+}
+
+.comment-text {
+    max-width: 60%;
+}

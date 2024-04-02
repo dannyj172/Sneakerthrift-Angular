@@ -15,60 +15,27 @@
         <img class='showcase-img' src="../../assets/showcase-3.jpg" alt='showcase' />
     </div>
 
-    <!-- {(listings && listings.length !== 0) && (
-    <div class="listings-container">
-        <h2 class="listings-title">Latest Listings</h2>
-        <div class='listings'>
-
-            {listings.map(x =>
-            <LatestListingsItem key={x._id} {...x} />)}
-
-        </div>
-
-    </div>
-    )} -->
-
-    <!-- <div class="testimonials">
-        <div class="left-t">
-            <span>Testimonials</span>
-            <span class='left-t-coloredtext'>What clients</span>
-            <span>say about us</span>
-            <motion.span key={selected} initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} exit={{
-                opacity: 0, x: 100 }} transition={transition}>
-                {testimonialsData[selected].review}
-            </motion.span>
-            <span>
-                <span style={{ color: "var(--lightBlue)" }}>
-                    {testimonialsData[selected].name}
-                </span>{" "}
-                - {testimonialsData[selected].status}
-            </span>
-        </div>
-        <div class="right-t">
-            <motion.div initial={{ opacity: 0, x: -100 }} transition={{ ...transition, duration: 2 }} whileInView={{
-                opacity: 1, x: 0 }}></motion.div>
-            <motion.div initial={{ opacity: 0, x: 100 }} transition={{ ...transition, duration: 2 }} whileInView={{
-                opacity: 1, x: 0 }}></motion.div>
-            <motion.img key={selected} initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity:
-                0, x: -100 }} transition={transition} src={testimonialsData[selected].image} alt="" />
-
-            <div class="arrows">
-                <img onClick={()=> {
-                selected === 0
-                ? setSelected(tLength - 1)
-                : setSelected((prev) => prev - 1)
-                }}
-                src={leftArrow} alt="" />
-
-                <img onClick={()=> {
-                selected === tLength - 1
-                ? setSelected(0)
-                : setSelected((prev) => prev + 1)
-                }}
-                src={rightArrow} alt="" />
+    <ng-container *ngIf="listings.length > 0 && listings">
+        <div class="listings-container">
+            <h2 class="listings-title">Latest Listings</h2>
+            <div class='listings'>
+                <div *ngFor="let listing of listings" class="card">
+                    <div class="listing-image">
+                        <img src={{listing.listingImageUrl}} alt="..." />
+                    </div>
+                    <div class="listing-content">
+                        <h3>{{listing.listingName}}</h3>
+                        <p>${{listing.listingPrice}}</p>
+                        <a (click)="navigateToListing(listing._id)" class="btn listing-button">View Listing</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div> -->
+    </ng-container>
+
+
+
+    <!-- <div class="testimonials"> </div> -->
 
     <div class="brands">
         <div class="brands-container">

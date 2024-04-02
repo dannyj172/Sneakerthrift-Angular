@@ -56,14 +56,4 @@ export class ApiService {
     return this.http.delete<Comment>(`${apiUrl}/data/comments/${commentId}`)
   }
 
-  // getPosts(limit?: number) {
-  //   const { apiUrl } = environment;
-  //   let url = `${apiUrl}/posts`;
-
-  //   if (limit) {
-  //     url += `?limit=${limit}`;
-  //   }
-
-  //   return this.http.get<Post[]>(url);
-  // }
 }

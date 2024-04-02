@@ -12,6 +12,7 @@ export class ListingsComponent {
 
   listings: Listing[] = [];
   isLoading: boolean = true;
+  selectModel: string = 'newest';
 
   constructor(private api: ApiService, private userService: UserService) { }
 
@@ -23,20 +24,42 @@ export class ListingsComponent {
     return this.userService.user?._id || ''
   }
 
+  selectionChange(){
+    switch(this.selectModel) {
+      case 'newest':
+        this.api.getListings().subscribe(listings => {
+          this.listings = listings.sort((listingOne, listingTwo) => parseFloat(listingTwo._createdOn) - parseFloat(listingOne._createdOn));
+          this.isLoading= false;
+        })
+        break;
+    case 'oldest':
+        this.api.getListings().subscribe(listings => {
+          this.listings = listings.sort((listingOne, listingTwo) => parseFloat(listingOne._createdOn) - parseFloat(listingTwo._createdOn));
+          this.isLoading= false;
+        })
+        break;
+    case 'price up':
+        this.api.getListings().subscribe(listings => {
+          this.listings = listings.sort((listingOne, listingTwo) => parseFloat(listingOne.listingPrice) - parseFloat(listingTwo.listingPrice));
+          this.isLoading= false;
+        })
+        break;
+    case 'price down':
+        this.api.getListings().subscribe(listings => {
+          this.listings = listings.sort((listingOne, listingTwo) => parseFloat(listingTwo.listingPrice) - parseFloat(listingOne.listingPrice));
+          this.isLoading= false;
+        })
+        break;
+      }
+    }
+
+
   ngOnInit(): void {
     this.api.getListings().subscribe(listings => {
-      this.listings = listings;
+      this.listings = listings.sort((listingOne, listingTwo) => parseFloat(listingTwo._createdOn) - parseFloat(listingOne._createdOn));
       this.isLoading= false;
     })
   }
-
-  // isSubscribed(listing:Listing){
-  //   const isSubscribedUser = listing.subscribers.find((s)=> {
-
-  //     return s===this.userService.user?._id;
-  //   });
-
-  //   return !!isSubscribedUser;
-  // }
+  
 }
 

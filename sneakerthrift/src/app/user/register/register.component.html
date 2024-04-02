@@ -1,9 +1,4 @@
 <div class="register-container">
-
-    <!-- {errors && (
-    <Popup text={errors}></Popup>
-    )} -->
-
     <img src="../../../assets/Authentication_Two Color.svg" alt="img" class="register__image" />
 
     <form class="form" [formGroup]="form" (ngSubmit)="register()">
@@ -46,11 +41,29 @@
                     formControlName="rePassword" />
                 <label class="form__label">Confirm Password</label>
             </div>
-
         </ng-container>
 
+        <div class="errors"
+            *ngIf="(form.get('email')?.touched && form.get('email')?.errors) || (passGroup?.get('rePassword')?.touched && passGroup?.get('rePassword')?.errors)">
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator']">
+                    Email is not valid!
+                </p>
+            </ng-container>
+            <ng-container *ngIf="passGroup?.get('rePassword')?.touched">
+                <p class="error" *ngIf="passGroup?.get('rePassword')?.errors?.['matchPasswordsValidator'] || 
+                  passGroup?.get('rePassword')?.errors?.['required']">
+                    Confirm password does not match password!
+                </p>
+            </ng-container>
+        </div>
+
         <div class="div__submit">
-            <input type="submit" class="form__button" />
+            <input [disabled]="form.invalid" [style]="{ opacity: form.invalid ? '50%' : '' }" type="submit"
+                class="form__button" />
         </div>
     </form>
 </div>

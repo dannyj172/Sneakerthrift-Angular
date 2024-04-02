@@ -174,6 +174,7 @@
     -ms-border-radius: .25em;
     -o-border-radius: .25em;
     text-align: center;
+    cursor: pointer;
 }
 
 .home .listing-button:hover {
@@ -181,92 +182,6 @@
 }
 
 /* Testimonials */
-
-.home .testimonials {
-    margin-top: 5rem;
-    display: flex;
-    gap: 1rem;
-    padding: 0 2rem;
-}
-
-
-.home .left-t {
-    display: flex;
-    flex: 1 1;
-    gap: 2rem;
-    flex-direction: column;
-    text-transform: uppercase;
-}
-
-.home .left-t>:nth-child(1) {
-    font-weight: bold;
-}
-
-.home .left-t>:nth-child(2),
-.home .left-t>:nth-child(3) {
-    font-weight: bold;
-    font-size: 3rem;
-}
-
-.home .left-t>:nth-child(4) {
-    text-transform: none;
-    text-align: justify;
-    letter-spacing: 2px;
-    line-height: 40px;
-}
-
-.home .right-t {
-    flex: 1;
-    position: relative;
-}
-
-.home .right-t>img {
-    position: absolute;
-    width: 17rem;
-    height: 20rem;
-    object-fit: cover;
-    right: 8rem;
-    top: 2rem;
-}
-
-.home .right-t>:nth-child(1) {
-    position: absolute;
-    width: 17rem;
-    height: 20rem;
-    border: 2px solid var(--lightBlue);
-    background-color: transparent;
-    right: 9rem;
-    top: 0.9rem;
-}
-
-
-.home .right-t>:nth-child(2) {
-    position: absolute;
-    width: 17rem;
-    height: 19rem;
-    right: 7rem;
-    top: 4rem;
-    background: var(--lightBlue);
-}
-
-.home .arrows {
-    display: flex;
-    gap: 1rem;
-    position: absolute;
-    bottom: 1rem;
-    left: 3rem;
-    filter: invert(30%) sepia(30%) saturate(291%) hue-rotate(136deg) brightness(85%) contrast(87%);
-    -webkit-filter: invert(30%) sepia(30%) saturate(291%) hue-rotate(136deg) brightness(85%) contrast(87%);
-}
-
-.home .arrows>img {
-    width: 1.5rem;
-    cursor: pointer;
-}
-
-.home .left-t-coloredtext {
-    color: var(--complimentary);
-}
 
 /* Brands */
 

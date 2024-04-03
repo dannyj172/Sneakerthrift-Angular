@@ -22,12 +22,22 @@
             <a href="">Facebook</a>
             <a href="">Instagram</a>
         </div>
-        <div class="footer-email-form">
-            <h2>Join us</h2>
-            <form>
-                <input type="email" name="user_email" placeholder="Enter your email address" class="footer-email" />
-                <input type="submit" value="Submit" class="footer-email-btn" />
-            </form>
-        </div>
+        <ng-container *ngIf="!removeJoinInput">
+            <div class="footer-email-form">
+                <h2>Join us</h2>
+                <form #form="ngForm" (ngSubmit)="sendEmail(form)">
+                    <input type="email" name="user_email" placeholder="Enter your email address" class="footer-email"
+                        required ngModel #inputEmail="ngModel" [appEmail]="domains" />
+                    <input [disabled]="form.invalid" [style]="{ opacity: form.invalid ? '60%' : '' }" type="submit"
+                        value={{buttonText}} (click)="changeButtonText()" class="footer-email-btn" />
+                </form>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="removeJoinInput">
+            <div class="footer-email-form">
+                <h2 class="footer-welcome-text">Welcome!</h2>
+            </div>
+        </ng-container>
     </div>
 </div>

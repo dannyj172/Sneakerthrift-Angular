@@ -8,6 +8,7 @@ import { AddListingComponent } from './add-listing/add-listing.component';
 import { ListingRoutingModule } from './listing-routing.module';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { MyListingsComponent } from './my-listings/my-listings.component';
+import { imageValidator } from '../shared/utils/image-validator';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { MyListingsComponent } from './my-listings/my-listings.component';
     EditListingComponent,
     MyListingsComponent,
   ],
-  imports: [CommonModule, ListingRoutingModule, SharedModule, FormsModule,ReactiveFormsModule],
+  imports: [CommonModule, ListingRoutingModule, SharedModule, FormsModule, ReactiveFormsModule],
 })
 export class ListingModule {}

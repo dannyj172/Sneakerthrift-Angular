@@ -5,6 +5,7 @@ import { EmailDirective } from './validators/email.directive';
 import { SlicePipe } from './pipes/slice.pipe';
 import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
 import { RouterModule } from '@angular/router';
+import { ImageDirective } from './validators/image.directive';
 
 
 
@@ -13,7 +14,9 @@ import { RouterModule } from '@angular/router';
     LoaderComponent,
     EmailDirective,
     SlicePipe,
-    ElapsedTimePipe,],
+    ElapsedTimePipe,
+    ImageDirective
+  ],
   imports: [
     CommonModule,RouterModule
   ],
@@ -21,7 +24,8 @@ import { RouterModule } from '@angular/router';
     LoaderComponent,
     EmailDirective,
     SlicePipe,
-    ElapsedTimePipe
+    ElapsedTimePipe,
+    ImageDirective
   ]
 })
 export class SharedModule { }

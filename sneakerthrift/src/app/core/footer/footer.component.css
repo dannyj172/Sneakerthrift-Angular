@@ -100,3 +100,7 @@
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+
+.footer-welcome-text {
+    color: var(--complimentary)
+}

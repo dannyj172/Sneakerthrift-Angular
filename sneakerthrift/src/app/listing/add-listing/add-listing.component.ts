@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, isStandalone } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/api.service';
 @Component({
   selector: 'app-add-listing',
   templateUrl: './add-listing.component.html',
-  styleUrls: ['./add-listing.component.css']
+  styleUrls: ['./add-listing.component.css'],
 })
 export class AddListingComponent {
   constructor(private apiService: ApiService,private router: Router) {

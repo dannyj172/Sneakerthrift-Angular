@@ -1,27 +1,63 @@
+![](http://imgur.com/t3teAxi.png)
+
+### A second hand eCommerce shoe selling website. Create listings and get contacted through your phone number. Control your own sales.
+
+## Features
+
+<b>General Features</b>
+
+| Feature          |  Coded?  | Description         |
+| ---------------- | :------: | :------------------ |
+| Login            | &#10004; | Ability to Login    |
+| Register         | &#10004; | Ability to Register |
+| Logout           | &#10004; | Ability to Logout   |
+| Create a Listing | &#10004; | Ability to create   |
+
+<b>Listing Features</b>
+
+| Feature            |  Coded?  | Description               |
+| ------------------ | :------: | :------------------------ |
+| View Listing       | &#10004; | Ability to view           |
+| Edit a Listing     | &#10004; | Ability to edit           |
+| Delete a Listing   | &#10004; | Ability to delete         |
+| Comment on Listing | &#10004; | Ability to comment        |
+| Delete Comment     | &#10004; | Ability to delete comment |
+| Sort Listing       | &#10004; | Ability to sort listing   |
+
 # Sneakerthrift
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+**Sneakerthrift** Our goal is to allow our sellers to easily sell their sneakers on our website where customers can contact you through your phone number and arrange the sale!
 
-## Development server
+## Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- make sure you have all dependencies installed
+- open 'server' folder in terminal and write node server.js
+- open 'sneakerthrift' folder in terminal and write ng serve
 
-## Code scaffolding
+# Getting Started with Create React App
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Build
+### Code Splitting
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Running unit tests
+### Analyzing the Bundle Size
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## Running end-to-end tests
+### Making a Progressive Web App
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Further help
+### Advanced Configuration
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

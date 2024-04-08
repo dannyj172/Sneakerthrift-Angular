@@ -12,8 +12,8 @@ export class ErrorService {
   constructor() { };
 
   setError(error: any): void {
+    console.log(error)
     this.apiError$$.next(error);
   }
-
 
 }

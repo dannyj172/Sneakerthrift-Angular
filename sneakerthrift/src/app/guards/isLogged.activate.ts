@@ -11,8 +11,8 @@ import { UserService } from '../user/user.service';
 import { ErrorService } from '../core/error/error.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthActivate implements CanActivate {
-  constructor(private userService: UserService) {}
+export class IsLoggedInGuard implements CanActivate {
+    constructor(private userService: UserService,private router: Router, private errorService: ErrorService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,8 +22,10 @@ export class AuthActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-
-    return this.userService.isLogged;
-
-  }
+        if (this.userService.isLogged) {
+          this.router.navigate(["/home"])
+          return false;
+        }
+        return true;
+      }
 }

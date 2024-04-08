@@ -14,6 +14,7 @@ export class AppInterceptor implements HttpInterceptor {
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const accessToken = localStorage.getItem('accessToken');
+        console.log(req)
         if(accessToken) {
             req = req.clone({
             setHeaders: {
@@ -32,8 +33,12 @@ export class AppInterceptor implements HttpInterceptor {
 
         return next.handle(req).pipe(
             catchError(err=> {
-                if(err.status === 401) {
+                console.log(err)
+                if(err.status === 401 ) {
                     this.router.navigate(['/auth/login'])
+                }else if(err.status === 403) {
+                    this.router.navigateByUrl('/', { skipLocationChange: true, }).then(() => {
+                        this.router.navigate(['/auth/login',{invalidCredentials: true}])});
                 } else {
                     this.errorService.setError(err);
                     this.router.navigate(['/error'])

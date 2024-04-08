@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { EMAIL_DOMAINS } from 'src/app/constants';
 
@@ -11,7 +11,9 @@ import { EMAIL_DOMAINS } from 'src/app/constants';
 })
 export class LoginComponent {
   domains = EMAIL_DOMAINS;
-  constructor(private userService: UserService, private router: Router) {}
+  invalidCredentials = this.activeRoute.snapshot.paramMap.get('invalidCredentials')
+  constructor(private userService: UserService, private router: Router, private activeRoute: ActivatedRoute) {}
+
 
   login(form: NgForm) {
     if (form.invalid) {

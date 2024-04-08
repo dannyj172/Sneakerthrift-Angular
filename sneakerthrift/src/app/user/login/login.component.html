@@ -32,7 +32,10 @@
         </div>
 
         <div class="errors"
-            *ngIf="(inputEmail.touched && inputEmail.errors) || (inputPassword.touched && inputPassword.errors)">
+            *ngIf="(inputEmail.touched && inputEmail.errors) || (inputPassword.touched && inputPassword.errors) || invalidCredentials">
+            <ng-container *ngIf="invalidCredentials">
+                <p class="error">Invalid Email / Password</p>
+            </ng-container>
             <ng-container *ngIf="inputEmail.touched">
                 <p class="error" *ngIf="inputEmail.errors?.['required']">
                     Email is required!

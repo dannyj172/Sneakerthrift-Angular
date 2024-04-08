@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListingModule } from './listing/listing.module';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { AppInterceptorProvider } from './app.interceptor';
+import { AuthActivate} from './guards/auth.activate';
+import { IsLoggedInGuard } from './guards/isLogged.activate';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { AppInterceptorProvider } from './app.interceptor';
     ListingModule,
     AppRoutingModule
   ],
-  providers: [AppInterceptorProvider],
+  providers: [AppInterceptorProvider, IsLoggedInGuard, AuthActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
